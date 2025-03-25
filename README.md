@@ -1,7 +1,7 @@
-<!-- 
-# 🚀 Task Management API
+## Deployed Link: **https://algo-root-blush.vercel.app/tasks**
 
-A **Task Management API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
+# 🚀 Task Management API
+**Task Management API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
 
 ---
 
@@ -198,107 +198,6 @@ Response Example:
 3️⃣ **Enter the API URL** (`https://algo-root.onrender.comtasks`)  
 4️⃣ **For `POST` and `PUT`**, go to **Body → raw → JSON**  
 5️⃣ **Send the request & check response**  
----
-
-## 📸 Screenshots Backend APIS
-
-### 🔹 Create Task in Postman
-![Create Task in Postman](Backend/Screenshots/createTask.png)
-
-### 🔹 Get All Tasks in Postman
-![Get All Task in Postman](Backend/Screenshots/getAllTask.png)
-
-
-### 🔹 Update Task in Postman
-![Update Task in Postman](Backend/Screenshots/updateTask.png)
-
-### 🔹 Delete Task in Postman
-![Delete Task in Postman](Backend/Screenshots/deleteTask.png)
-
-
-
-
-
-
-## 📸 Screenshots Frontend 
-
-### 🔹 Create Task 
-![Create Task ](Frontend/Screenshots/createTask.png)
-
-### 🔹 Get All Tasks
-![Get All Task ](Frontend/Screenshots/getAllTask.png)
-
-
-### 🔹 Update Task 
-![Modify Task ](Frontend/Screenshots/UpdateTasks.png)
-![Edit Task ](Frontend/Screenshots/EditTask.png)
-
-### 🔹 Delete Task 
-![Delete Task ](Frontend/Screenshots/deleteTask.png)
-
-
-
-## Tech Stack
-
-**Backend: Node.js, Express.js, Prisma, PostgreSQL**
-
-**Frontend: React.js, Vite, Tailwind CSS**
-
-**Database: PostgreSQL**
-
-## Contributor
-
-**Prathmesh Kamble -https://github.com/kambleprathamesh** -->
-
-
-
-
-
-# 🚀 Task Management Application
-
-A **Task Management Application** built with Node.js, Express, and Prisma for the backend, and React.js with Vite for the frontend.
-
----
-
-## 🛠 Backend Installation & Setup
-
-### **1️⃣ Clone the Repository**
-
-```sh
-git clone https://github.com/kambleprathamesh/Algo-Root.git
-cd Backend
-```
-
-### **2️⃣ Install Dependencies**
-
-```sh
-npm install
-```
-
-### **3️⃣ Setup Environment Variables**
-
-Create a `.env` file in the root directory and add the following:
-
-```env
-PORT=5000
-DATABASE_URL="postgresql://user:password@localhost:5432/taskdb"
-```
-
-### **4️⃣ Run Database Migrations**
-
-```sh
-npx prisma migrate dev --name init
-```
-
-### **5️⃣ Start the Server**
-
-```sh
-npm run dev
-```
-
-Your server will run at **[http://localhost:5000](http://localhost:5000)** or **[http://localhost:5001](http://localhost:5001)** 🚀
-
----
 
 ## 🖥️ Frontend Installation & Setup
 
@@ -336,7 +235,6 @@ The application will run at **[http://localhost:5173](http://localhost:5173)** �
 ### **Frontend Features:**
 - User-friendly task management interface
 - Create, edit, update, and delete tasks
-- Task filtering and sorting
 - Responsive design with Tailwind CSS
 - Real-time updates
 
@@ -347,7 +245,7 @@ The application will run at **[http://localhost:5173](http://localhost:5173)** �
 1️⃣ **Open Postman** and create a new request\
 2️⃣ **Select HTTP method** (`GET, POST, PUT, DELETE`)\
 3️⃣ **Enter the API URL** (`http://localhost:5000/tasks`)\
-4️⃣ **For ************`POST`************ and \*\*\*\*\*\*\*\*****`PUT`**, go to **Body → raw → JSON**\
+4️⃣ **For **`POST`** and **`PUT`**, go to **Body → raw → JSON**\
 5️⃣ **Send the request & check response**
 
 ---
@@ -377,7 +275,4 @@ The application will run at **[http://localhost:5173](http://localhost:5173)** �
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
