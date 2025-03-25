@@ -1,6 +1,6 @@
 ## Deployed Link: **https://algo-root-blush.vercel.app/tasks**
 
-# 🚀 Task Management APPLICATION
+# 🚀 Task Management Application
 **Task Management API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
 
 ---
