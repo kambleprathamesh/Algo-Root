@@ -13,10 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model task {
-  id          String   @unique @default(uuid())
+model Task {
+  id          String   @id @default(uuid()) @unique
   title       String
   description String?
-  completed   Boolean  @default(false)
+  status      TaskStatus @default(INCOMPLETE)  
   createdAt   DateTime @default(now())
+  dueDate     DateTime? // New field for the due date
+}
+
+enum TaskStatus {
+  INCOMPLETE
+  COMPLETE
+  IN_PROGRESS
+  REVIEW
 }

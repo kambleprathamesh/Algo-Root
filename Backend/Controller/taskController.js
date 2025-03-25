@@ -9,7 +9,9 @@ const prisma = new PrismaClient();
 export const getAllTask = async (req, res) => {
   try {
     const tasks = await prisma.task.findMany();
-
+    if (!tasks) {
+      res.status(404).json({ message: "No Task Found" });
+    }
     res.status(200).json({
       status: true,
       data: tasks,
@@ -27,13 +29,13 @@ export const getAllTask = async (req, res) => {
 
 export const createTask = async (req, res) => {
   try {
-    const { title, description, completed } = req.body;
+    const { title, description, dueDate } = req.body;
 
     if (!title) {
       return res.status(400).json({ erro: "Title is Required" });
     }
     const newTask = await prisma.task.create({
-      data: { title, description, completed },
+      data: { title, description, dueDate },
     });
 
     console.log("NewTAsk created in controller", newTask);
@@ -61,7 +63,7 @@ export const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
     console.log("ID ", id);
-    const { title, description, completed } = req.body;
+    const { title, description, status, dueDate } = req.body;
 
     //check if task present in db
     const checkExistingTask = await prisma.task.findUnique({
@@ -75,7 +77,7 @@ export const updateTask = async (req, res) => {
     const updateTask = await prisma.task.update({
       where: { id: id },
 
-      data: { title, description, completed },
+      data: { title, description, status, dueDate },
     });
 
     console.log("UPDATED TASK ", updateTask);
