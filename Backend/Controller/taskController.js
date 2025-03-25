@@ -10,16 +10,16 @@ export const getAllTask = async (req, res) => {
   try {
     const tasks = await prisma.task.findMany();
     if (!tasks) {
-      res.status(404).json({ message: "No Task Found" });
+      return res.status(404).json({ message: "No Task Found" });
     }
-    res.status(200).json({
+    return res.status(200).json({
       status: true,
       data: tasks,
       message: "All Task retrived Succesfully",
     });
   } catch (error) {
     console.error("Error fetching tasks:", error);
-    res.status(500).json({ error: "Failed to fetch tasks" });
+    return res.status(500).json({ error: "Failed to fetch tasks" });
   }
 };
 
@@ -35,7 +35,6 @@ export const createTask = async (req, res) => {
       return res.status(400).json({ erro: "Please Fill all Required Data" });
     }
 
-    
     const formattedDueDate = dueDate ? new Date(dueDate) : null;
 
     if (formattedDueDate && isNaN(formattedDueDate.getTime())) {
@@ -67,10 +66,19 @@ export const createTask = async (req, res) => {
 //***********************************************************************//
 
 export const updateTask = async (req, res) => {
+  console.log("CONTROLLER REACHING HERE UPDATE");
   try {
     const { id } = req.params;
     console.log("ID ", id);
     const { title, description, status, dueDate } = req.body;
+    let formattedDueDate;
+    if (dueDate) {
+      formattedDueDate = dueDate ? new Date(dueDate) : null;
+
+      if (formattedDueDate && isNaN(formattedDueDate.getTime())) {
+        return res.status(400).json({ error: "Invalid Due Date format" });
+      }
+    }
 
     //check if task present in db
     const checkExistingTask = await prisma.task.findUnique({
@@ -84,7 +92,7 @@ export const updateTask = async (req, res) => {
     const updateTask = await prisma.task.update({
       where: { id: id },
 
-      data: { title, description, status, dueDate },
+      data: { title, description, status, dueDate: formattedDueDate },
     });
 
     console.log("UPDATED TASK ", updateTask);
