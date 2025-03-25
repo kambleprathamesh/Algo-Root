@@ -1,4 +1,4 @@
-
+<!-- 
 # 🚀 Task Management API
 
 A **Task Management API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
@@ -191,7 +191,7 @@ Response Example:
 ```
 
 ---
-## 🛠 Testing with Postman
+## 🛠 API Testing with Postman
 
 1️⃣ **Open Postman** and create a new request  
 2️⃣ **Select HTTP method** (`GET, POST, PUT, DELETE`)  
@@ -214,6 +214,11 @@ Response Example:
 
 ### 🔹 Delete Task in Postman
 ![Delete Task in Postman](Backend/Screenshots/deleteTask.png)
+
+
+
+
+
 
 ## 📸 Screenshots Frontend 
 
@@ -243,4 +248,136 @@ Response Example:
 
 ## Contributor
 
-**Prathmesh Kamble -https://github.com/kambleprathamesh**
+**Prathmesh Kamble -https://github.com/kambleprathamesh** -->
+
+
+
+
+
+# 🚀 Task Management Application
+
+A **Task Management Application** built with Node.js, Express, and Prisma for the backend, and React.js with Vite for the frontend.
+
+---
+
+## 🛠 Backend Installation & Setup
+
+### **1️⃣ Clone the Repository**
+
+```sh
+git clone https://github.com/kambleprathamesh/Algo-Root.git
+cd Backend
+```
+
+### **2️⃣ Install Dependencies**
+
+```sh
+npm install
+```
+
+### **3️⃣ Setup Environment Variables**
+
+Create a `.env` file in the root directory and add the following:
+
+```env
+PORT=5000
+DATABASE_URL="postgresql://user:password@localhost:5432/taskdb"
+```
+
+### **4️⃣ Run Database Migrations**
+
+```sh
+npx prisma migrate dev --name init
+```
+
+### **5️⃣ Start the Server**
+
+```sh
+npm run dev
+```
+
+Your server will run at **[http://localhost:5000](http://localhost:5000)** or **[http://localhost:5001](http://localhost:5001)** 🚀
+
+---
+
+## 🖥️ Frontend Installation & Setup
+
+### **1️⃣ Navigate to the Frontend Directory**
+
+```sh
+cd ../Frontend
+```
+
+### **2️⃣ Install Dependencies**
+
+```sh
+npm install
+```
+
+### **3️⃣ Start the Development Server**
+
+```sh
+npm run dev
+```
+
+The application will run at **[http://localhost:5173](http://localhost:5173)** 🚀
+
+---
+
+## 📌 Features
+
+### **Backend Features:**
+- Task Creation
+- Task Editing & Updating
+- Task Status Management
+- Task Deletion
+- API Endpoints for CRUD Operations
+
+### **Frontend Features:**
+- User-friendly task management interface
+- Create, edit, update, and delete tasks
+- Task filtering and sorting
+- Responsive design with Tailwind CSS
+- Real-time updates
+
+---
+
+## 🛠 Testing with Postman
+
+1️⃣ **Open Postman** and create a new request\
+2️⃣ **Select HTTP method** (`GET, POST, PUT, DELETE`)\
+3️⃣ **Enter the API URL** (`http://localhost:5000/tasks`)\
+4️⃣ **For ************`POST`************ and \*\*\*\*\*\*\*\*****`PUT`**, go to **Body → raw → JSON**\
+5️⃣ **Send the request & check response**
+
+---
+
+## 📩 API Endpoints
+
+| Method   | Endpoint            | Description       |
+| -------- | ------------------- | ----------------- |
+| `GET`    | `/tasks`            | Get all tasks     |
+| `POST`   | `/tasks/createTask` | Create a new task |
+| `PUT`    | `/tasks/update/:id` | Update a task     |
+| `DELETE` | `/tasks/delete/:id` | Delete a task     |
+
+---
+
+## 🏗️ Tech Stack
+
+- **Backend:** Node.js, Express.js, Prisma, PostgreSQL
+- **Frontend:** React.js, Vite, Tailwind CSS
+- **Database:** PostgreSQL
+
+---
+
+## 👥 Contributors
+
+- **Prathmesh Kamble** - [GitHub](https://github.com/kambleprathamesh)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
