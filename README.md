@@ -57,7 +57,7 @@ Your server will run at **http://localhost:5000** or **http://localhost:5001** �
 ## 📩 API Request & Response Examples  
 
 ### **🔹 Create a Task**
-**Request (POST `/tasks/create`)**
+**Request (POST `/tasks/createTask`)**
 ```json
 {
     "title":"MY FIRST TASK ",
