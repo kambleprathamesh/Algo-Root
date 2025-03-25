@@ -31,11 +31,18 @@ export const createTask = async (req, res) => {
   try {
     const { title, description, dueDate } = req.body;
 
-    if (!title) {
-      return res.status(400).json({ erro: "Title is Required" });
+    if (!title || !dueDate) {
+      return res.status(400).json({ erro: "Please Fill all Required Data" });
+    }
+
+    
+    const formattedDueDate = dueDate ? new Date(dueDate) : null;
+
+    if (formattedDueDate && isNaN(formattedDueDate.getTime())) {
+      return res.status(400).json({ error: "Invalid Due Date format" });
     }
     const newTask = await prisma.task.create({
-      data: { title, description, dueDate },
+      data: { title, description, dueDate: formattedDueDate },
     });
 
     console.log("NewTAsk created in controller", newTask);
