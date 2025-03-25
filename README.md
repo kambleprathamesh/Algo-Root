@@ -284,15 +284,16 @@ The application will run at **[http://localhost:5173](http://localhost:5173)** �
 ![Create Task ](Frontend/Screenshots/createTask.png)
 
 ### 🔹 Get All Tasks
-![Get All Task ](Frontend/Screenshots/getAllTask.png)
+![Get All Task ](Frontend/Screenshots/GetAllTask.png)
 
 
 ### 🔹 Update Task 
 ![Modify Task ](Frontend/Screenshots/UpdateTasks.png)
+
 ![Edit Task ](Frontend/Screenshots/EditTask.png)
 
 ### 🔹 Delete Task 
-![Delete Task ](Frontend/Screenshots/deleteTask.png)
+![Delete Task ](Frontend/Screenshots/DeleteTask.png)
 
 
 
