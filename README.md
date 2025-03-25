@@ -9,8 +9,8 @@ A **Task Management API** built with Node.js, Express, and Prisma, using Postgre
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/your-username/task-Management-api.git
-cd task-Management-api
+git clone https://github.com/kambleprathamesh/Algo-Root.git
+cd Backend
 ```
 
 ### **2️⃣ Install Dependencies**
@@ -20,9 +20,14 @@ npm install
 
 ### **3️⃣ Setup Environment Variables**
 Create a `.env` file in the root directory and add the following:
+
+NOTE: Make sure to update your .env file with your actual PostgreSQL connection URL:
+Replace username, password, and your_database with your actual credentials.
+If you're using a cloud database (e.g., Supabase, Render,Neon, etc), use the provided connection URL instead.
 ```env
 PORT=5000
 DATABASE_URL="postgresql://user:password@localhost:5432/taskdb"
+
 ```
 
 ### **4️⃣ Run Database Migrations**
@@ -34,7 +39,7 @@ npx prisma migrate dev --name init
 ```sh
 npm run dev
 ```
-Your server will run at **http://localhost:5000** 🚀
+Your server will run at **http://localhost:5000** or **http://localhost:5001** 🚀
 
 ---
 
@@ -43,7 +48,7 @@ Your server will run at **http://localhost:5000** 🚀
 | Method   | Endpoint              | Description           |
 |----------|----------------------|----------------------- |
 | `GET`    | `/tasks`             | Get all tasks          |
-| `POST`   | `/tasks/create`      | Create a new task      |
+| `POST`   | `/tasks/createTask`      | Create a new task      |
 | `PUT`    | `/tasks/update/:id`  | Update a task          |
 | `DELETE` | `/tasks/delete/:id`  | Delete a task          |
 
