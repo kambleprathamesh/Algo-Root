@@ -7,6 +7,8 @@ const Home = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [completeTasks, setCompleteTasks] = useState(0);
+  const [incompleteTasks, setIncompleteTasks] = useState(0);
 
   // Fetch tasks from the backend
   useEffect(() => {
@@ -25,8 +27,20 @@ const Home = () => {
           dueDate: task.dueDate ? task.dueDate.split("T")[0] : "N/A",
         }));
 
-        console.log(formattedTasks);
         setTasks(formattedTasks);
+
+        // Calculate Completed and Incomplete Tasks
+        const completedCount = formattedTasks.filter(
+          (task) => task.status === "COMPLETE"
+        ).length;
+        const incompleteCount = formattedTasks.filter(
+          (task) => task.status === "INCOMPLETE"
+        ).length;
+        console.log("completedCount", completedCount);
+        console.log("incompleteCount", incompleteCount);
+
+        setCompleteTasks(completedCount);
+        setIncompleteTasks(incompleteCount);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -50,15 +64,11 @@ const Home = () => {
         </div>
         <div className="w-full md:w-1/4 rounded-xl bg-red-200 p-4 md:p-6 border border-gray-500 text-center font-bold text-lg md:text-2xl shadow-md">
           Incomplete Tasks:{" "}
-          <span className="text-red-700">
-            {tasks.filter((task) => task.status === "Incomplete").length}
-          </span>
+          <span className="text-red-700">{incompleteTasks}</span>
         </div>
         <div className="w-full md:w-1/4 rounded-xl bg-green-200 p-4 md:p-6 border border-gray-500 text-center font-bold text-lg md:text-2xl shadow-md">
           Complete Tasks:{" "}
-          <span className="text-green-700">
-            {tasks.filter((task) => task.status === "Complete").length}
-          </span>
+          <span className="text-green-700">{completeTasks}</span>
         </div>
       </div>
 
