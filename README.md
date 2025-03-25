@@ -261,6 +261,41 @@ The application will run at **[http://localhost:5173](http://localhost:5173)** �
 
 ---
 
+
+## 📸 Screenshots Backend APIS
+
+### 🔹 Create Task in Postman
+![Create Task in Postman](Backend/Screenshots/createTask.png)
+
+### 🔹 Get All Tasks in Postman
+![Get All Task in Postman](Backend/Screenshots/getAllTask.png)
+
+
+### 🔹 Update Task in Postman
+![Update Task in Postman](Backend/Screenshots/updateTask.png)
+
+### 🔹 Delete Task in Postman
+![Delete Task in Postman](Backend/Screenshots/deleteTask.png)
+
+
+## 📸 Screenshots Frontend 
+
+### 🔹 Create Task 
+![Create Task ](Frontend/Screenshots/createTask.png)
+
+### 🔹 Get All Tasks
+![Get All Task ](Frontend/Screenshots/getAllTask.png)
+
+
+### 🔹 Update Task 
+![Modify Task ](Frontend/Screenshots/UpdateTasks.png)
+![Edit Task ](Frontend/Screenshots/EditTask.png)
+
+### 🔹 Delete Task 
+![Delete Task ](Frontend/Screenshots/deleteTask.png)
+
+
+
 ## 🏗️ Tech Stack
 
 - **Backend:** Node.js, Express.js, Prisma, PostgreSQL
