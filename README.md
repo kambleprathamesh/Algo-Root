@@ -39,7 +39,7 @@ npx prisma migrate dev --name init
 ```sh
 npm run dev
 ```
-Your server will run at **http://localhost:5000** or **http://localhost:5001** 🚀
+Your server will run at **https://algo-root.onrender.com/** or **http://localhost:5001** 🚀
 
 ---
 
@@ -195,12 +195,12 @@ Response Example:
 
 1️⃣ **Open Postman** and create a new request  
 2️⃣ **Select HTTP method** (`GET, POST, PUT, DELETE`)  
-3️⃣ **Enter the API URL** (`http://localhost:5000/tasks`)  
+3️⃣ **Enter the API URL** (`https://algo-root.onrender.comtasks`)  
 4️⃣ **For `POST` and `PUT`**, go to **Body → raw → JSON**  
 5️⃣ **Send the request & check response**  
 ---
 
-## 📸 Screenshots
+## 📸 Screenshots Backend APIS
 
 ### 🔹 Create Task in Postman
 ![Create Task in Postman](Backend/Screenshots/createTask.png)
@@ -215,3 +215,32 @@ Response Example:
 ### 🔹 Delete Task in Postman
 ![Delete Task in Postman](Backend/Screenshots/deleteTask.png)
 
+## 📸 Screenshots Frontend 
+
+### 🔹 Create Task 
+![Create Task ](Frontend/Screenshots/createTask.png)
+
+### 🔹 Get All Tasks
+![Get All Task ](Frontend/Screenshots/getAllTask.png)
+
+
+### 🔹 Update Task 
+![Modify Task ](Frontend/Screenshots/UpdateTasks.png)
+![Edit Task ](Frontend/Screenshots/EditTask.png)
+
+### 🔹 Delete Task 
+![Delete Task ](Frontend/Screenshots/deleteTask.png)
+
+
+
+## Tech Stack
+
+**Backend: Node.js, Express.js, Prisma, PostgreSQL**
+
+**Frontend: React.js, Vite, Tailwind CSS**
+
+**Database: PostgreSQL**
+
+## Contributor
+
+**Prathmesh Kamble -https://github.com/kambleprathamesh**
