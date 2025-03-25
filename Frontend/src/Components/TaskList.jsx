@@ -4,13 +4,13 @@ const TaskList = ({ tasks }) => {
   // Function to determine color based on status
   const getStatusColor = (status) => {
     switch (status) {
-      case "Incomplete":
+      case "INCOMPLETE":
         return "bg-red-200 text-red-800";
-      case "In Progress":
+      case "IN_PROGRESS":
         return "bg-blue-200 text-blue-800";
-      case "Reviewed":
+      case "REVIEW":
         return "bg-yellow-200 text-yellow-800";
-      case "Complete":
+      case "COMPLETE":
         return "bg-green-200 text-green-800";
       default:
         return "bg-gray-200 text-gray-800";
@@ -32,31 +32,7 @@ const TaskList = ({ tasks }) => {
         <p>Status</p>
       </div>
 
-      {/* Task Rows */}
-      {/* {tasks.map((task, index) => {
-        const truncatedTitle =
-          task.title.length > 20
-            ? task.title.substring(0, 20) + "..."
-            : task.title;
-        return (
-          <div
-            key={task.id}
-            className={`grid grid-cols-3 items-center py-2 px-3 md:px-4 text-xs md:text-sm lg:text-base rounded-md ${
-              index % 2 === 0 ? "bg-gray-100" : "bg-white"
-            }`}
-          >
-            <p className="truncate">{task.createdAt}</p>
-            <p className="font-medium truncate">{truncatedTitle}</p>
-            <span
-              className={`md:w-1/2 px-2 py-1 text-xs md:text-sm font-semibold rounded-full text-center ${getStatusColor(
-                task.status
-              )}`}
-            >
-              {task.status}
-            </span>
-          </div>
-        );
-      })} */}
+      
 
       <div>
         {tasks.map((task, index) => {
@@ -73,7 +49,7 @@ const TaskList = ({ tasks }) => {
               } cursor-pointer`}
               onClick={() => handleTaskClick(task)}
             >
-              <p className="truncate">{task.createdAt}</p>
+              <p className="truncate">{task.dueDate}</p>
               <p className="font-medium truncate">{truncatedTitle}</p>
               <span
                 className={`md:w-1/2 px-2 py-1 text-xs md:text-sm font-semibold rounded-full text-center ${getStatusColor(
