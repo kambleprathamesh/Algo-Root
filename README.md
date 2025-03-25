@@ -1,7 +1,7 @@
 
-### 🚀 Task Management API
+# 🚀 Task Management API
 
-A **Task Manager API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
+A **Task Management API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
 
 ---
 
@@ -9,8 +9,8 @@ A **Task Manager API** built with Node.js, Express, and Prisma, using PostgreSQL
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/your-username/task-manager-api.git
-cd task-manager-api
+git clone https://github.com/your-username/task-Management-api.git
+cd task-Management-api
 ```
 
 ### **2️⃣ Install Dependencies**
