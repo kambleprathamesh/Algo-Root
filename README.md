@@ -45,10 +45,10 @@ Your server will run at **http://localhost:5000** or **http://localhost:5001** ð
 
 ## ðŸ“Œ API Endpoints
 
-| Method   | Endpoint              | Description           |
+| Method   | Endpoint             | Description            |
 |----------|----------------------|----------------------- |
 | `GET`    | `/tasks`             | Get all tasks          |
-| `POST`   | `/tasks/createTask`      | Create a new task      |
+| `POST`   | `/tasks/createTask`  | Create a new task      |
 | `PUT`    | `/tasks/update/:id`  | Update a task          |
 | `DELETE` | `/tasks/delete/:id`  | Delete a task          |
 
@@ -60,8 +60,9 @@ Your server will run at **http://localhost:5000** or **http://localhost:5001** ð
 **Request (POST `/tasks/createTask`)**
 ```json
 {
-    "title":"MY FIRST TASK ",
-    "description":"DESCRIPTION 1"
+    "title": "Create API Documentation",
+    "description": "Write detailed API documentation for developers.",
+    "dueDate": "2024-04-12T17:00:00.000Z"
 }
 ```
 **Response**
@@ -69,16 +70,17 @@ Your server will run at **http://localhost:5000** or **http://localhost:5001** ð
 {
     "status": true,
     "newTask": {
-        "id": "d6d31f52-a3ef-48e3-87a0-ef06c3d798f4",
-        "title": "MY FIRST TASK ",
-        "description": "DESCRIPTION 1",
-        "completed": false,
-        "createdAt": "2025-03-25T08:38:15.254Z"
+        "id": "96db39b0-fa83-4e83-86d7-815aa1316404",
+        "title": "Create API Documentation",
+        "description": "Write detailed API documentation for developers.",
+        "status": "INCOMPLETE",
+        "createdAt": "2025-03-25T17:43:21.294Z",
+        "dueDate": "2024-04-12T17:00:00.000Z"
     },
     "message": "New Task Created Succesfully"
 }
 ```
-ðŸ”¹ If `Completed` is not provided, it defaults to **false** (Pending).  
+ðŸ”¹ If `Status` is not provided, it defaults to **INCOMPLETE** (Pending).  
 
 ---
 
@@ -90,25 +92,52 @@ Response Example:
     "status": true,
     "data": [
         {
-            "id": "3484f96c-895e-4013-bc05-5b14de730c7e",
-            "title": "MY FIRST TASK",
-            "description": "DESCRIPTION 1",
-            "completed": false,
-            "createdAt": "2025-03-25T07:07:32.803Z"
+            "id": "96782d9b-7fa2-4cdf-b8c2-d1bd6a5e40b2",
+            "title": "Fix Backend API Bug",
+            "description": "Resolve the issue with authentication middleware.",
+            "status": "INCOMPLETE",
+            "createdAt": "2025-03-25T17:41:23.649Z",
+            "dueDate": "2024-03-25T18:00:00.000Z"
         },
         {
-            "id": "72267738-23d1-4a36-84e4-4b5790b1d161",
-            "title": "MY UPDATED TASK 10 ",
-            "description": "DESCRIPTION 2",
-            "completed": true,
-            "createdAt": "2025-03-25T07:08:19.217Z"
+            "id": "bf0cbf10-bf3e-4735-a528-cbd9e72a3837",
+            "title": "Write Unit Tests",
+            "description": "Add test cases for user authentication module.",
+            "status": "INCOMPLETE",
+            "createdAt": "2025-03-25T17:41:37.310Z",
+            "dueDate": "2024-03-28T14:00:00.000Z"
         },
         {
-            "id": "d6d31f52-a3ef-48e3-87a0-ef06c3d798f4",
-            "title": "MY FIRST TASK ",
-            "description": "DESCRIPTION 1",
-            "completed": false,
-            "createdAt": "2025-03-25T08:38:15.254Z"
+            "id": "cdc5d035-9948-4cab-992d-592e143dcde7",
+            "title": "UI Enhancement",
+            "description": "Improve dashboard UI with a new theme.",
+            "status": "INCOMPLETE",
+            "createdAt": "2025-03-25T17:41:58.923Z",
+            "dueDate": "2024-04-01T10:00:00.000Z"
+        },
+        {
+            "id": "4972ba3d-ced8-41c0-9cf7-d699c9410eb1",
+            "title": "Optimize Query Performance",
+            "description": "Refactor database queries to improve performance.",
+            "status": "INCOMPLETE",
+            "createdAt": "2025-03-25T17:42:37.162Z",
+            "dueDate": "2024-04-05T12:00:00.000Z"
+        },
+        {
+            "id": "3693dc8f-e384-494d-923c-bb76b0d12b44",
+            "title": "Frontend Bug Fix",
+            "description": "Fix alignment issues in the navbar.",
+            "status": "INCOMPLETE",
+            "createdAt": "2025-03-25T17:42:52.452Z",
+            "dueDate": "2024-04-03T15:30:00.000Z"
+        },
+        {
+            "id": "8bc9f0ce-5885-4598-bec3-07ffb9353df1",
+            "title": "Deploy New Release",
+            "description": "Push latest updates to production.",
+            "status": "INCOMPLETE",
+            "createdAt": "2025-03-25T17:43:02.031Z",
+            "dueDate": "2024-04-07T09:00:00.000Z"
         }
     ],
     "message": "All Task retrived Succesfully"
@@ -121,8 +150,8 @@ Response Example:
 **Request (PUT `/tasks/update/:id`)**
 ```json
 {
-    "title":"MY UPDATED TASK 10 ",
-    "completed":true
+  "title": "MY UPDATED TASK 10",
+  "status": "COMPLETE"
 }
 ```
 **Response**
@@ -131,11 +160,12 @@ Response Example:
     "status": true,
     "message": "TASK UPDATED SUCCESFULLY",
     "updateTask": {
-        "id": "72267738-23d1-4a36-84e4-4b5790b1d161",
-        "title": "MY UPDATED TASK 10 ",
-        "description": "DESCRIPTION 2",
-        "completed": true,
-        "createdAt": "2025-03-25T07:08:19.217Z"
+        "id": "96db39b0-fa83-4e83-86d7-815aa1316404",
+        "title": "MY UPDATED TASK 10",
+        "description": "New Description",
+        "status": "COMPLETE",
+        "createdAt": "2025-03-25T17:43:21.294Z",
+        "dueDate": "2024-03-30T16:00:00.000Z"
     }
 }
 ```
@@ -150,11 +180,12 @@ Response Example:
     "status": true,
     "message": "TASK DELETED  SUCCESFULLY",
     "deleteTask": {
-        "id": "7d35541b-ac80-478b-89d7-f94ff3740123",
-        "title": "MY FOURTH TASK ",
-        "description": "DESCRIPTION 4",
-        "completed": false,
-        "createdAt": "2025-03-25T07:23:18.034Z"
+        "id": "bf0cbf10-bf3e-4735-a528-cbd9e72a3837",
+        "title": "Write Unit Tests",
+        "description": "Add test cases for user authentication module.",
+        "status": "INCOMPLETE",
+        "createdAt": "2025-03-25T17:41:37.310Z",
+        "dueDate": "2024-03-28T14:00:00.000Z"
     }
 }
 ```
