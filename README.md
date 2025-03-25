@@ -305,7 +305,7 @@ The application will run at **[http://localhost:5173](http://localhost:5173)** �
 
 ---
 
-## 👥 Contributors
+## 👥 Contributor
 
 - **Prathmesh Kamble** - [GitHub](https://github.com/kambleprathamesh)
 
