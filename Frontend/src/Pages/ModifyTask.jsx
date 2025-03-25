@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const ModifyTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -8,13 +9,15 @@ const ModifyTask = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Fetch tasks from backend
-
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:5000/tasks");
+        setLoading(true);
+        const response = await fetch("https://algo-root.onrender.com/tasks");
         const data = await response.json();
 
         if (!response.ok) {
@@ -27,7 +30,6 @@ const ModifyTask = () => {
           dueDate: task.dueDate ? task.dueDate.split("T")[0] : "N/A",
         }));
 
-        console.log("formattedTasks ", formattedTasks);
         setTasks(formattedTasks);
       } catch (error) {
         setError(error.message);
@@ -37,12 +39,11 @@ const ModifyTask = () => {
     };
 
     fetchTasks();
-    console.log("TASKS ", tasks);
   }, [taskToDelete, selectedTask]);
 
   // Open Edit Modal
-  const openEditModal = (tasks) => {
-    setSelectedTask(tasks);
+  const openEditModal = (task) => {
+    setSelectedTask(task);
     setIsEditModalOpen(true);
   };
 
@@ -53,9 +54,9 @@ const ModifyTask = () => {
   };
 
   // Open Delete Modal
-  const openDeleteModal = (taskId) => {
-    console.log("TASK ID IN OPEN DELETE MODAL", taskId?.id);
-    setTaskToDelete(taskId?.id);
+  const openDeleteModal = (task) => {
+    console.log(" Task in open modal ", task?.id);
+    setTaskToDelete(task?.id);
     setIsDeleteModalOpen(true);
   };
 
@@ -68,14 +69,19 @@ const ModifyTask = () => {
   // Handle Delete Task
   const handleDelete = async () => {
     console.log("DELETE HANDLER FUNCTION ");
-
+    // console.log(first)
     try {
       //   const taskId = tasks;
       console.log("taskToDelete ", taskToDelete);
-      await axios.delete(`http://localhost:5000/tasks/delete/${taskToDelete}`);
+      await axios.delete(
+        `https://algo-root.onrender.com/tasks/delete/${taskToDelete}`
+      );
+
       setTasks(tasks.filter((tasks) => tasks._id !== taskToDelete));
+      toast.success("Task deleted successfully");
       closeDeleteModal();
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Error deleting task");
       console.error("Error deleting task:", error);
     }
   };
@@ -94,47 +100,54 @@ const ModifyTask = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/tasks/update/${taskId}`,
+        `https://algo-root.onrender.com/tasks/update/${taskId}`,
         selectedTask
       );
       setTasks(
         tasks.map((task) => (task._id === taskId ? selectedTask : task))
       );
+      toast.success("Task updated successfully");
       closeEditModal();
     } catch (error) {
+      toast.error(error?.response?.data?.message || "Error updating task");
       console.error("Error updating task:", error);
     }
   };
-
   return (
     <div className="w-full flex flex-col items-center min-h-screen bg-gray-100 p-6">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Task List</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
-        {tasks.map((task) => (
-          <div
-            key={task._id}
-            className="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center"
-          >
-            <div>
-              <h3 className="text-lg font-semibold">{task.title}</h3>
-              <p className="text-gray-600">{task.description}</p>
-              <p className="text-sm text-gray-500">Due: {task.dueDate}</p>
-              <p className="text-sm font-bold">Status: {task.status}</p>
+      {loading ? (
+        <p>Loading tasks...</p>
+      ) : error ? (
+        <p className="text-red-600">{error}</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
+          {tasks.map((task) => (
+            <div
+              key={task._id}
+              className="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center"
+            >
+              <div>
+                <h3 className="text-lg font-semibold">{task.title}</h3>
+                <p className="text-gray-600">{task.description}</p>
+                <p className="text-sm text-gray-500">Due: {task.dueDate}</p>
+                <p className="text-sm font-bold">Status: {task.status}</p>
+              </div>
+              <div className="flex space-x-2">
+                <FaEdit
+                  className="text-blue-600 cursor-pointer"
+                  onClick={() => openEditModal(task)}
+                />
+                <FaTrash
+                  className="text-red-600 cursor-pointer"
+                  onClick={() => openDeleteModal(task)}
+                />
+              </div>
             </div>
-            <div className="flex space-x-2">
-              <FaEdit
-                className="text-blue-600 cursor-pointer"
-                onClick={() => openEditModal(task)}
-              />
-              <FaTrash
-                className="text-red-600 cursor-pointer"
-                onClick={() => openDeleteModal(task)}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Edit Modal */}
       {isEditModalOpen && selectedTask && (
@@ -164,34 +177,35 @@ const ModifyTask = () => {
                   onChange={handleInputChange}
                   className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-transparent"
                 ></textarea>
-              </div>
-              <div>
-                <label className="block text-gray-700 font-semibold">
-                  Due Date
-                </label>
-                <input
-                  type="date"
-                  name="dueDate"
-                  value={selectedTask.dueDate}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700 font-semibold">
-                  Status
-                </label>
-                <select
-                  name="status"
-                  value={selectedTask.status}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-transparent"
-                >
-                  <option value="INCOMPLETE">Incomplete</option>
-                  <option value="IN_PROGRESS">In Progress</option>
-                  <option value="COMPLETE">Completed</option>
-                  <option value="REVIEW">Pending Review</option>
-                </select>
+
+                <div>
+                  <label className="block text-gray-700 font-semibold">
+                    Due Date
+                  </label>
+                  <input
+                    type="date"
+                    name="dueDate"
+                    value={selectedTask.dueDate}
+                    onChange={handleInputChange}
+                    className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-semibold">
+                    Status
+                  </label>
+                  <select
+                    name="status"
+                    value={selectedTask.status}
+                    onChange={handleInputChange}
+                    className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-transparent"
+                  >
+                    <option value="INCOMPLETE">Incomplete</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="COMPLETE">Completed</option>
+                    <option value="REVIEW">Pending Review</option>
+                  </select>
+                </div>
               </div>
               <div className="flex justify-between mt-4">
                 <button

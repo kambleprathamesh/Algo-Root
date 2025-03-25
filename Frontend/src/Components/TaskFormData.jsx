@@ -15,7 +15,7 @@ const TaskForm = ({
           {/* Title Field */}
           <div>
             <label className="block text-gray-700 font-semibold mb-1">
-              Title
+              Title <span className="text-red-600 text-xl">*</span>
             </label>
             <input
               type="text"
@@ -45,7 +45,7 @@ const TaskForm = ({
           {/* Due Date Field */}
           <div>
             <label className="block text-gray-700 font-semibold mb-1">
-              Due Date
+              Due Date <span className="text-red-600 text-xl">*</span>
             </label>
             <input
               type="date"
@@ -81,7 +81,7 @@ const TaskForm = ({
           <div className="flex justify-between mt-4">
             <button
               type="submit"
-              className="px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-800 transition-all"
+              className="px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-800 transition-all cursor-pointer"
             >
               {isEditMode ? "Update Task" : "Create Task"}
             </button>

@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:5000/tasks");
+        const response = await fetch("https://algo-root.onrender.com/tasks");
         const data = await response.json();
 
         if (!response.ok) {
