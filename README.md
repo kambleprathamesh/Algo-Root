@@ -187,18 +187,9 @@ This project is **MIT licensed**.
 
 ---
 
-🚀 **Developed with ❤️ by [Your Name]**
+🚀 **Developed with ❤️ by Prathmesh Kamble**
 ```
 
-### **📌 Explanation of README Contents:**
-✅ **Installation Steps:** Commands to install, setup, and run the backend.  
-✅ **API Endpoints Table:** Clean & structured list of all endpoints.  
-✅ **Request/Response Examples:** Includes **POST, GET, PUT, DELETE** with JSON samples.  
-✅ **Testing Instructions:** Steps for **Postman & cURL**.  
-✅ **Screenshots:** Embedded images for clarity.  
-✅ **License & Credits:** Standard documentation footer.  
-
----
 
 ### **💡 Next Steps**
 1. Add **real screenshots** in the `screenshots/` folder and push them to GitHub.
