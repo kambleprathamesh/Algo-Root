@@ -179,20 +179,3 @@ Response Example:
 ### 🔹 Delete Task in Postman
 ![Delete Task in Postman](Backend/Screenshots/deleteTask.png)
 
-
----
-
-## 📜 License
-This project is **MIT licensed**.  
-
----
-
-🚀 **Developed with ❤️ by Prathmesh Kamble**
-```
-
-
-### **💡 Next Steps**
-1. Add **real screenshots** in the `screenshots/` folder and push them to GitHub.
-2. If hosting online, update **API Base URL** in the documentation.
-
-Your README is now **clean, professional, and production-ready!** 🚀
