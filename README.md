@@ -1,5 +1,5 @@
 
-# 🚀 Task Manager API
+### 🚀 Task Management API
 
 A **Task Manager API** built with Node.js, Express, and Prisma, using PostgreSQL as the database.
 
