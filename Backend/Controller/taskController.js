@@ -54,7 +54,7 @@ export const createTask = async (req, res) => {
 };
 
 //***********************************************************************//
-//                             EDIT  TASK                                //
+//                             UPDATE  TASK                              //
 //***********************************************************************//
 
 export const updateTask = async (req, res) => {
